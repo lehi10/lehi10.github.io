@@ -10,8 +10,8 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   integrations: [mdx(), sitemap(), react()],
-  site: 'https://lehi10.github.io',
-  base: 'lehi10.github.io',
+  site: 'https://lehi10.github.io/',
+  base: '/lehi10.github.io/',
   vite: {
     plugins: [tailwindcss()],
   },
