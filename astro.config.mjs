@@ -11,6 +11,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   integrations: [mdx(), sitemap(), react()],
   site: 'https://lehi10.github.io/',
+  output: 'static',
   base: '/',
   vite: {
     plugins: [tailwindcss()],
