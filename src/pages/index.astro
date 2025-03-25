@@ -18,10 +18,10 @@ import Skills from '../components/Skills.astro';
 
 // Content Fetching: List four most recent work projects
 const projects = (await getCollection('work'))
-	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
-	.slice(0, 4);
+	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 
-// Full Astro Component Syntax:
+
+	// Full Astro Component Syntax:
 // https://docs.astro.build/basics/astro-components/
 ---
 
@@ -42,18 +42,15 @@ const projects = (await getCollection('work'))
 						 -->
 					</div>
 				</Hero>
-
 				<img
-					alt="Lehi Quincho smiling in a red plaid shirt and tortoise shell glasses"
+					alt="Lehi Quincho taking a selfie."
 					width="480"
 					height="620"
 					src="/assets/portrait.jpg"
 				/>
 			</header>
-
 			<Skills />
 		</div>
-
 		<main class="wrapper stack gap-20 lg:gap-48">
 			<section class="section with-background with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
@@ -62,7 +59,7 @@ const projects = (await getCollection('work'))
 				</header>
 
 				<div class="gallery">
-					<Grid variant="offset">
+					<Grid variant="small">
 						{
 							projects.map((project) => (
 								<li>
@@ -80,7 +77,7 @@ const projects = (await getCollection('work'))
 					</CallToAction>
 				</div>
 			</section>
-
+			<!--
 			<section class="section with-background bg-variant">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Mentions</h3>
@@ -101,7 +98,7 @@ const projects = (await getCollection('work'))
 						}
 					</Grid>
 				</div>
-			</section>
+			</section> -->
 		</main>
 
 		<ContactCTA />
