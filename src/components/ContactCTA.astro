@@ -1,46 +1,96 @@
 ---
-import CallToAction from './CallToAction.astro';
 import Icon from './Icon.astro';
 ---
 
-<aside>
-	<h2>Interested in working together?</h2>
-	<CallToAction href="mailto:lqmyacs@gmail.com">
-		Send Me a Message
-		<Icon icon="paper-plane-tilt" size="1.2em" />
-	</CallToAction>
+<aside class="contact-cta">
+	<div class="cta-content">
+		<div class="cta-text">
+			<h2>Let's work together</h2>
+			<p>Building something with AI agents or need a full stack engineer who works with LLMs daily? Let's talk.</p>
+		</div>
+		<div class="cta-actions">
+			<a href="mailto:lqmyacs@gmail.com" class="btn-primary">
+				<Icon icon="paper-plane-tilt" size="1em" />
+				Send a message
+			</a>
+			<a href="https://www.linkedin.com/in/lehi-quincho" class="btn-secondary" target="_blank" rel="noopener">
+				<Icon icon="linkedin-logo" size="1em" />
+				Connect on LinkedIn
+			</a>
+		</div>
+	</div>
 </aside>
 
 <style>
-	aside {
+	.contact-cta {
+		padding: 3.5rem 0;
+	}
+
+	.cta-content {
+		background: var(--gray-900);
+		border: 1px solid var(--gray-700);
+		border-radius: var(--radius-lg);
+		padding: 2.5rem;
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-		gap: 3rem;
-		border-top: 1px solid var(--gray-800);
-		border-bottom: 1px solid var(--gray-800);
-		padding: 5rem 1.5rem;
-		background-color: var(--gray-999_40);
-		box-shadow: var(--shadow-sm);
+		gap: 2rem;
 	}
 
-	h2 {
-		font-size: var(--text-xl);
-		text-align: center;
-		max-width: 15ch;
+	.cta-text h2 {
+		font-size: var(--text-2xl);
+		font-weight: 700;
+		color: var(--gray-0);
+		margin-bottom: 0.5rem;
+		letter-spacing: -0.02em;
 	}
+
+	.cta-text p {
+		color: var(--gray-400);
+		font-size: var(--text-md);
+		line-height: 1.6;
+		max-width: 48ch;
+	}
+
+	.cta-actions {
+		display: flex;
+		gap: 0.75rem;
+		flex-wrap: wrap;
+	}
+
+	.btn-primary, .btn-secondary {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.625rem 1.25rem;
+		border-radius: var(--radius-sm);
+		font-size: var(--text-sm);
+		font-weight: 600;
+		text-decoration: none;
+		transition: all var(--theme-transition);
+	}
+
+	.btn-primary {
+		background: var(--gray-0);
+		color: var(--gray-999);
+		border: 1px solid var(--gray-0);
+	}
+	.btn-primary:hover { background: var(--gray-100); }
+
+	.btn-secondary {
+		background: transparent;
+		color: var(--gray-200);
+		border: 1px solid var(--gray-700);
+	}
+	.btn-secondary:hover { border-color: var(--gray-500); color: var(--gray-0); background: var(--gray-800); }
 
 	@media (min-width: 50em) {
-		aside {
-			padding: 7.5rem;
+		.cta-content {
 			flex-direction: row;
-			flex-wrap: wrap;
+			align-items: center;
 			justify-content: space-between;
+			padding: 2.5rem 3rem;
 		}
 
-		h2 {
-			font-size: var(--text-3xl);
-			text-align: left;
-		}
+		.cta-actions { flex-shrink: 0; }
 	}
 </style>

@@ -1,180 +1,209 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
 import ContactCTA from '../components/ContactCTA.astro';
-import Hero from '../components/Hero.astro';
 ---
 
-<BaseLayout title="About | Lehi Quincho" description="About Lehi Quincho Lorem Ipsum">
-	<div class="stack gap-20">
-		<main class="wrapper about">
-			<Hero
-				title="About"
-				tagline="Thanks for stopping by. Read below to learn more about myself and my background."
-			>
-				
-			</Hero>
+<BaseLayout
+	title="About — Lehi Quincho"
+	description="Agentic Engineer with 5+ years of experience building web, mobile and AI-powered applications. Based in Lima, Perú."
+>
+	<main class="wrapper about">
 
-			<section>
-				<h2 class="section-title">Background</h2>
-				<div class="content">
+		<header class="about-header">
+			<h1>About me</h1>
+			<p class="subtitle">
+				Agentic Engineer with 5+ years building web, mobile and AI-powered products
+				across logistics, fintech and SaaS. Based in Lima, Perú.
+			</p>
+		</header>
+
+		<div class="about-grid">
+			<section class="section">
+				<h2>Background</h2>
+				<div class="prose">
 					<p>
-						I am a highly skilled Frontend Developer with extensive experience in building web and mobile applications. My expertise lies in React, React Native, Next.js, and TypeScript, and I have contributed to large-scale projects by developing authentication systems, implementing design systems, and configuring internationalization. I have worked on mobile applications for industries such as healthcare, finance, and logistics, using technologies like Expo, Redux, and Firebase. Additionally, I have experience conducting technical interviews, mentoring developers, and leading frontend teams in remote environments.
+						I build AI-powered applications and agentic systems — workflows where LLMs reason,
+						use tools, and take actions. My stack spans React, Node.js, Python and mobile,
+						so I can own the full loop from UI to agent backend.
 					</p>
 					<p>
-						Beyond my professional experience, I hold a Bachelor's degree in Computer Science and have a strong passion for competitive programming. I have participated in ICPC South America contests and have been involved in educational initiatives, teaching programming and software testing. My problem-solving mindset, leadership skills, and adaptability allow me to thrive in dynamic development environments.
+						At Globant I've shipped multi-platform projects for global clients (Grifols, JMFamily,
+						CashPak) — mobile apps on the App Store and Google Play, Blazor design systems, and
+						fintech features. Before that I led frontend at Skillmapper, building B2B/B2C platforms
+						and a Chrome Extension from scratch.
+					</p>
+					<p>
+						I use Claude Code and GitHub Copilot every day — not as autocomplete, but as
+						collaborators for architecture, multi-file refactors and complex problem solving.
+						That's what shaped the move into agentic engineering.
 					</p>
 				</div>
 			</section>
-			<section>
-				<h2 class="section-title">Education</h2>
-				<div class="content">
-					<p>Universidad Nacional de San Agustín.</p>
+
+			<section class="section">
+				<h2>Education</h2>
+				<div class="prose">
+					<p>
+						<strong>Bachelor's in Computer Science</strong><br />
+						Universidad Nacional de San Agustín (UNSA), Arequipa, Perú
+					</p>
+					<p>
+						Participated in <strong>ICPC South America</strong> contests.
+						Competitive programming background that sharpened algorithmic thinking.
+					</p>
 				</div>
 			</section>
-			<section>
-				<h2 class="section-title">Skills</h2>
-				<div class="content">
-					<div style="display: flex; flex-wrap: wrap; gap: 20px;">
-						<div style="flex: 1; min-width: 250px;">
-						  <h6 style="font-weight: bold;">Frontend Development</h6>
-						  <ul>
-							<li>React.js</li>
-							<li>React Native</li>
-							<li>Next.js</li>
-							<li>Expo</li>
-							<li>Material UI</li>
-							<li>Ant Design</li>
-							<li>Redux</li>
-							<li>TanStack Query</li>
-						  </ul>
-					  
-						  <h6 style="margin-top: 15px; font-weight: bold;">Backend Development</h6>
-						  <ul>
-							<li>Node.js</li>
-							<li>Express.js</li>
+
+			<section class="section">
+				<h2>Skills</h2>
+				<div class="skills-grid">
+					<div class="skill-group">
+						<h4>Frontend</h4>
+						<ul>
+							<li>React.js · React Native · Next.js</li>
+							<li>TypeScript · JavaScript</li>
+							<li>Expo · Material UI · Ant Design</li>
+							<li>Redux · TanStack Query</li>
+						</ul>
+					</div>
+					<div class="skill-group">
+						<h4>AI Tools</h4>
+						<ul>
+							<li>Claude Code (Anthropic)</li>
+							<li>GitHub Copilot</li>
+						</ul>
+					</div>
+					<div class="skill-group">
+						<h4>Backend & DB</h4>
+						<ul>
+							<li>Node.js · Express.js</li>
 							<li>Django (Python)</li>
-						  </ul>
-					  
-						  <h6 style="margin-top: 15px; font-weight: bold;">Programming Languages</h6>
-						  <ul>
-							<li>TypeScript (Main language)</li>
-							<li>JavaScript</li>
-							<li>Python</li>
-							<li>C</li>
-							<li>C#</li>
-							<li>Java</li>
-						  </ul>
-					  
-						  <h6 style="margin-top: 15px; font-weight: bold;">Databases</h6>
-						  <ul>
-							<li>PostgreSQL</li>
-							<li>MySQL</li>
-							<li>Microsoft SQL Server</li>
-						  </ul>
-						</div>
-					  
-						<div style="flex: 1; min-width: 250px;">
-						  <h6 style="font-weight: bold;">DevOps & Cloud</h6>
-						  <ul>
-							<li>Firebase</li>
-							<li>Microsoft Azure</li>
-						  </ul>
-					  
-						  <h6 style="margin-top: 15px; font-weight: bold;">Testing & QA</h6>
-						  <ul>
-							<li>Jest</li>
-							<li>BUnit</li>
-							<li>Selenium</li>
-							<li>JMeter</li>
-						  </ul>
-					  
-						  <h6 style="margin-top: 15px; font-weight: bold;">Tools & Others</h6>
-						  <ul>
-							<li>Chrome Extensions Development</li>
-							<li>Git & GitHub</li>
-							<li>Monorepos (pnpm, Yarn workspaces)</li>
-							<li>Deep linking (Branch.io)</li>
-							<li>Push notifications (OneSignal)</li>
-							<li>Customer support integration (Helpshift)</li>
-							<li>Internationalization (i18n)</li>
-						  </ul>
-					  
-						  <h6 style="margin-top: 15px; font-weight: bold;">Soft Skills</h6>
-						  <ul>
-							<li>Technical leadership & mentorship</li>
-							<li>Conducting technical interviews</li>
-							<li>Teaching & training developers</li>
-							<li>Problem-solving & analytical thinking</li>
-							<li>Remote teamwork & collaboration</li>
-						  </ul>
-						</div>
-					  </div>
-					  
+							<li>PostgreSQL · MySQL · Firebase</li>
+						</ul>
+					</div>
+					<div class="skill-group">
+						<h4>Other</h4>
+						<ul>
+							<li>Blazor · C# · Java</li>
+							<li>Chrome Extensions</li>
+							<li>Monorepos (pnpm · Yarn WS)</li>
+							<li>Azure · OneSignal · Branch.io</li>
+						</ul>
+					</div>
+					<div class="skill-group">
+						<h4>Testing</h4>
+						<ul>
+							<li>Jest · BUnit</li>
+							<li>Selenium · JMeter</li>
+						</ul>
+					</div>
+					<div class="skill-group">
+						<h4>Soft skills</h4>
+						<ul>
+							<li>Technical leadership</li>
+							<li>Team mentoring</li>
+							<li>Technical interviews</li>
+							<li>Remote collaboration</li>
+						</ul>
+					</div>
 				</div>
-				
-
 			</section>
-		</main>
+		</div>
 
 		<ContactCTA />
-	</div>
+	</main>
 </BaseLayout>
 
 <style>
 	.about {
+		padding-top: 3.5rem;
+		padding-bottom: 2rem;
+	}
+
+	.about-header {
+		max-width: 52ch;
+		margin-bottom: 3rem;
+	}
+
+	.about-header h1 {
+		font-size: clamp(2rem, 5vw, var(--text-5xl));
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		margin-bottom: 0.75rem;
+	}
+
+	.subtitle {
+		font-size: var(--text-lg);
+		color: var(--gray-400);
+		line-height: 1.6;
+	}
+
+	.about-grid {
 		display: flex;
 		flex-direction: column;
-		gap: 3.5rem;
+		gap: 3rem;
 	}
 
-	img {
-		margin-top: 1.5rem;
-		border-radius: 1.5rem;
-		box-shadow: var(--shadow-md);
-	}
-
-	section {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-		color: var(--gray-200);
-	}
-
-	.section-title {
-		grid-column-start: 1;
+	.section h2 {
 		font-size: var(--text-xl);
+		font-weight: 700;
 		color: var(--gray-0);
+		letter-spacing: -0.02em;
+		margin-bottom: 1.25rem;
+		padding-bottom: 0.75rem;
+		border-bottom: 1px solid var(--gray-800);
 	}
 
-	.content {
-		grid-column: 2 / 4;
+	.prose {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
 	}
 
-	.content :global(a) {
-		text-decoration: 1px solid underline transparent;
-		text-underline-offset: 0.25em;
-		transition: text-decoration-color var(--theme-transition);
+	.prose p {
+		font-size: var(--text-md);
+		color: var(--gray-300);
+		line-height: 1.7;
+		max-width: 64ch;
 	}
 
-	.content :global(a:hover),
-	.content :global(a:focus) {
-		text-decoration-color: currentColor;
+	.prose strong {
+		color: var(--gray-100);
+		font-weight: 600;
+	}
+
+	.skills-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5rem 2rem;
+	}
+
+	.skill-group h4 {
+		font-size: var(--text-sm);
+		font-weight: 600;
+		color: var(--gray-400);
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		margin-bottom: 0.625rem;
+	}
+
+	.skill-group ul {
+		list-style: none;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+	}
+
+	.skill-group li {
+		font-size: var(--text-sm);
+		color: var(--gray-300);
+		font-family: var(--font-mono);
 	}
 
 	@media (min-width: 50em) {
-		.about {
-			display: grid;
-			grid-template-columns: 1fr 60% 1fr;
-		}
-
-		.about > :global(:first-child) {
-			grid-column-start: 2;
-		}
-
-		section {
-			display: contents;
-			font-size: var(--text-lg);
+		.skills-grid {
+			grid-template-columns: repeat(3, 1fr);
 		}
 	}
 </style>

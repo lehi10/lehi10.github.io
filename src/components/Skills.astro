@@ -1,62 +1,337 @@
 ---
-import Icon from './Icon.astro';
+import { Icon } from 'astro-icon/components';
+
+interface Skill {
+	name: string;
+	icon?: string;
+	dot?: string;
+}
+interface Group {
+	label: string;
+	dot: string;
+	badge?: string;
+	skills: Skill[];
+}
+
+// Row 1 — Core
+// Row 2 — Infrastructure
+// Row 3 — Workflow
+const groups: Group[] = [
+	// ── Row 1: Core ──────────────────────────────────
+	{
+		label: 'Languages',
+		dot: '#8b949e',
+		skills: [
+			{ name: 'TypeScript', icon: 'logos:typescript-icon' },
+			{ name: 'JavaScript', icon: 'logos:javascript' },
+			{ name: 'Python',     icon: 'logos:python' },
+			{ name: 'Java',       icon: 'logos:java' },
+			{ name: 'C#',         dot: '#9b4993' },
+		],
+	},
+	{
+		label: 'Frontend',
+		dot: '#58a6ff',
+		skills: [
+			{ name: 'React',        icon: 'logos:react' },
+			{ name: 'Next.js',      icon: 'logos:nextjs-icon' },
+			{ name: 'React Native', icon: 'logos:react' },
+			{ name: 'Expo',         icon: 'logos:expo-icon' },
+			{ name: 'Blazor',       dot: '#512BD4' },
+		],
+	},
+	{
+		label: 'UI Libraries',
+		dot: '#d29922',
+		skills: [
+			{ name: 'shadcn/ui',    dot: '#e6edf3' },
+			{ name: 'Tailwind CSS', icon: 'logos:tailwindcss-icon' },
+			{ name: 'Material UI',  icon: 'logos:material-ui' },
+			{ name: 'Ant Design',   icon: 'logos:ant-design' },
+			{ name: 'MudBlazor',    dot: '#594AE2' },
+		],
+	},
+	{
+		label: 'State & Fetching',
+		dot: '#a371f7',
+		skills: [
+			{ name: 'GraphQL',        icon: 'logos:graphql' },
+			{ name: 'Apollo',         icon: 'logos:apollostack' },
+			{ name: 'Redux',          icon: 'logos:redux' },
+			{ name: 'TanStack Query', dot: '#ef4444' },
+			{ name: 'Firebase',       icon: 'logos:firebase' },
+		],
+	},
+
+	// ── Row 2: Infrastructure ─────────────────────────
+	{
+		label: 'Backend',
+		dot: '#3fb950',
+		skills: [
+			{ name: 'Node.js',    icon: 'logos:nodejs-icon' },
+			{ name: 'Express.js', dot: '#adbac7' },
+			{ name: 'Django',     icon: 'logos:django-icon' },
+			{ name: 'Prisma',     icon: 'logos:prisma' },
+			{ name: 'BullMQ',     dot: '#ef4444' },
+			{ name: 'WordPress',  icon: 'logos:wordpress-icon' },
+		],
+	},
+	{
+		label: 'Databases',
+		dot: '#58a6ff',
+		skills: [
+			{ name: 'PostgreSQL',      icon: 'logos:postgresql' },
+			{ name: 'MySQL',           icon: 'logos:mysql-icon' },
+			{ name: 'Supabase',        icon: 'logos:supabase-icon' },
+			{ name: 'Supabase Vector', dot: '#3ecf8e' },
+		],
+	},
+	{
+		label: 'Cloud & Deploy',
+		dot: '#58a6ff',
+		skills: [
+			{ name: 'Vercel',         icon: 'logos:vercel-icon' },
+			{ name: 'Railway',        dot: '#8b5cf6' },
+			{ name: 'Azure',          icon: 'logos:azure-icon' },
+			{ name: 'GitHub Actions', dot: '#2088FF' },
+			{ name: 'iOS',            icon: 'logos:apple' },
+			{ name: 'Android',        icon: 'logos:android-icon' },
+		],
+	},
+	{
+		label: 'Integrations',
+		dot: '#25D366',
+		skills: [
+			{ name: 'WhatsApp API', dot: '#25D366' },
+			{ name: 'WordPress',    icon: 'logos:wordpress-icon' },
+			{ name: 'n8n',          dot: '#ea4b71' },
+		],
+	},
+
+	// ── Row 3: Workflow ───────────────────────────────
+	{
+		label: 'AI & Agents',
+		dot: '#3fb950',
+		skills: [
+			{ name: 'Claude Code',    dot: '#f97316' },
+			{ name: 'LlamaIndex',     dot: '#f97316' },
+			{ name: 'OpenAI',         icon: 'logos:openai-icon' },
+			{ name: 'OpenRouter',     dot: '#6e7681' },
+			{ name: 'Fal.ai',         dot: '#a855f7' },
+			{ name: 'GitHub Copilot', icon: 'logos:github-octocat' },
+		],
+	},
+	{
+		label: 'Version Control',
+		dot: '#3fb950',
+		skills: [
+			{ name: 'Git',          icon: 'logos:git-icon' },
+			{ name: 'GitHub',       icon: 'logos:github-octocat' },
+			{ name: 'GitKraken',    dot: '#169287' },
+			{ name: 'Graphite CLI', dot: '#6e7681' },
+		],
+	},
+	{
+		label: 'Dev Tools',
+		dot: '#f97316',
+		skills: [
+			{ name: 'Linear',       icon: 'logos:linear-icon' },
+			{ name: 'Jira',         icon: 'logos:jira' },
+			{ name: 'Notion',       dot: '#e6edf3' },
+			{ name: 'Slack',        icon: 'logos:slack-icon' },
+			{ name: 'Postman',      icon: 'logos:postman-icon' },
+			{ name: 'Azure DevOps', icon: 'logos:azure-icon' },
+		],
+	},
+	{
+		label: 'Testing',
+		dot: '#f85149',
+		skills: [
+			{ name: 'Jest',     icon: 'logos:jest' },
+			{ name: 'Selenium', icon: 'logos:selenium' },
+			{ name: 'JMeter',   dot: '#d22128' },
+			{ name: 'BUnit',    dot: '#512BD4' },
+		],
+	},
+];
+
+const total = groups.reduce((n, g) => n + g.skills.length, 0);
 ---
 
-<section class="box skills">
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="terminal-window" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Frontend Developer</h2>
-		<p>Expert in scalable web and mobile apps using React, React Native, and Next.js.</p>
+<section class="skills-wrap">
+
+	<div class="skills-title-row">
+		<span class="skills-title">Skills &amp; Technologies</span>
+		<span class="skills-count">{total}</span>
 	</div>
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="trophy" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Industry Leader</h2>
-		<p>Led frontend teams, conducted technical interviews, and mentored developers.</p>
+
+	<div class="groups-grid">
+		{groups.map(group => (
+			<div class="group-box">
+
+				<div class="group-top">
+					<span class="gdot" style={`background:${group.dot}`}></span>
+					<span class="glabel">{group.label}</span>
+					{group.badge && <span class="gbadge">{group.badge}</span>}
+				</div>
+
+				<div class="chips">
+					{group.skills.map(skill => (
+						<span class="chip">
+							{skill.icon
+								? <Icon name={skill.icon} class="cicon" />
+								: <span class="cdot" style={`background:${skill.dot ?? '#8b949e'}`}></span>
+							}
+							{skill.name}
+						</span>
+					))}
+				</div>
+
+			</div>
+		))}
 	</div>
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="strategy" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Strategy-Minded</h2>
-		<p>Focused on efficient, user-friendly interfaces and B2B/B2C product development.</p>
-	</div>
+
 </section>
 
 <style>
-	.box {
-		border: 1px solid var(--gray-800);
-		border-radius: 0.75rem;
-		padding: 1.5rem;
-		background-color: var(--gray-999_40);
-		box-shadow: var(--shadow-sm);
+	/* ── Section wrapper ── */
+	.skills-wrap {
+		padding: 2rem 0;
 	}
 
-	.skills {
+	/* Title row */
+	.skills-title-row {
+		display: flex;
+		align-items: center;
+		gap: 0.625rem;
+		margin-bottom: 1.25rem;
+		padding-bottom: 0.75rem;
+		border-bottom: 1px solid var(--border-default);
+	}
+
+	.skills-title {
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: var(--fg-default);
+		font-family: var(--font-sans);
+	}
+
+	.skills-count {
+		font-size: 0.75rem;
+		color: var(--fg-subtle);
+		background: var(--canvas-subtle);
+		border: 1px solid var(--border-default);
+		border-radius: 20px;
+		padding: 0.1rem 0.5rem;
+		font-family: var(--font-mono);
+	}
+
+	/* ── Grid of group boxes ── */
+	.groups-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 0.5rem;
+	}
+
+	@media (min-width: 480px) {
+		.groups-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+	}
+
+	@media (min-width: 860px) {
+		.groups-grid { grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+	}
+
+	/* ── Individual group box ── */
+	.group-box {
+		background: var(--canvas-subtle);
+		border: 1px solid var(--border-default);
+		border-radius: 6px;
+		padding: 0.875rem 1rem;
 		display: flex;
 		flex-direction: column;
-		gap: 3rem;
+		gap: 0.625rem;
+		transition: border-color 0.15s ease;
+	}
+	.group-box:hover {
+		border-color: var(--border-default);
+		background: #1c2128;
 	}
 
-	.skills h2 {
-		font-size: var(--text-lg);
+	/* Group header */
+	.group-top {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
 	}
 
-	.skills p {
-		color: var(--gray-400);
+	.gdot {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		flex-shrink: 0;
 	}
 
-	@media (min-width: 50em) {
-		.box {
-			border-radius: 1.5rem;
-			padding: 2.5rem;
-		}
+	.glabel {
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: var(--fg-default);
+		font-family: var(--font-sans);
+		flex: 1;
+	}
 
-		.skills {
-			display: grid;
-			grid-template-columns: repeat(3, 1fr);
-			gap: 5rem;
-		}
+	.gbadge {
+		font-size: 0.6875rem;
+		font-weight: 600;
+		color: #3fb950;
+		background: rgba(63, 185, 80, 0.1);
+		border: 1px solid rgba(63, 185, 80, 0.4);
+		border-radius: 20px;
+		padding: 0.1rem 0.4rem;
+		white-space: nowrap;
+	}
 
-		.skills h2 {
-			font-size: var(--text-2xl);
-		}
+	/* ── Chips container ── */
+	.chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.3rem;
+	}
+
+	/* ── Individual chip ── */
+	.chip {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.3rem;
+		height: 22px;
+		padding: 0 0.5rem;
+		background: #21262d;
+		border: 1px solid #30363d;
+		border-radius: 4px;
+		font-size: 0.6875rem;
+		font-weight: 500;
+		font-family: var(--font-mono);
+		color: #adbac7;
+		white-space: nowrap;
+		transition: border-color 0.15s, color 0.15s;
+	}
+	.chip:hover {
+		border-color: #6e7681;
+		color: #e6edf3;
+	}
+
+	/* Icon inside chip */
+	.cicon {
+		width: 12px;
+		height: 12px;
+		flex-shrink: 0;
+		display: block;
+	}
+
+	/* Dot fallback inside chip */
+	.cdot {
+		width: 7px;
+		height: 7px;
+		border-radius: 50%;
+		flex-shrink: 0;
 	}
 </style>

@@ -1,0 +1,354 @@
+---
+interface Job {
+	company: string;
+	role: string;
+	period: string;
+	location: string;
+	highlights: string[];
+	stack: string[];
+	current?: boolean;
+	color?: string;
+	logo?: string;
+	url?: string;
+}
+
+const jobs: Job[] = [
+	{
+		company: 'TuAgenda.pe',
+		role: 'Software Engineer · Founder',
+		period: 'Aug 2025 — Present',
+		location: 'Lima, Perú · Remote',
+		current: true,
+		color: '#5B5BD6',
+		logo: '/assets/tuagenda.png',
+		url: 'https://tuagenda.pe',
+		highlights: [
+			'SaaS for appointment and business management — built from 0 to production',
+			'Next.js 15 App Router, Prisma ORM, PostgreSQL, Firebase Auth',
+			'Monorepo with pnpm workspaces + Turborepo, hexagonal architecture',
+			'Multi-location calendar, client management, real-time booking flow',
+		],
+		stack: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Firebase', 'TanStack Query', 'Tailwind CSS', 'Turborepo'],
+	},
+	{
+		company: 'Globant',
+		role: 'Web UI Developer',
+		period: 'Jul 2023 — Present',
+		location: 'Lima, Perú · Remote',
+		current: true,
+		color: '#3fb950',
+		logo: '/assets/globant.png',
+		highlights: [
+			'JMFamily — auth flows & design system with Blazor + Microsoft Entra',
+			'Grifols — published Grifols Plasma Donor Hub on iOS & Android (React Native monorepo)',
+			'CashPak — virtual wallet features, remittances, deep linking, push notifications (Pako Wallet)',
+			'Technical interviews for frontend candidates',
+		],
+		stack: ['React', 'React Native', 'Expo', 'Blazor', 'TypeScript', 'C#', 'OneSignal', 'Branch.io'],
+	},
+	{
+		company: 'Skillmapper',
+		role: 'Frontend Lead · Software Engineer',
+		period: 'Sep 2021 — Jun 2023',
+		location: 'Lima, Perú · Remote',
+		color: '#58a6ff',
+		logo: '/assets/skillmapper-logo.png',
+		highlights: [
+			'Led team building B2B and B2C platforms from scratch',
+			'iOS & Android apps with React Native + Expo',
+			'Chrome Extension for user engagement',
+			'Technical interviews, product demos to investors',
+		],
+		stack: ['React', 'Next.js', 'TypeScript', 'React Native', 'Material UI', 'Redux', 'TanStack Query', 'Firebase'],
+	},
+	{
+		company: 'Chazki',
+		role: 'Frontend Developer',
+		period: 'Mar 2020 — Aug 2021',
+		location: 'Lima, Perú',
+		color: '#a371f7',
+		logo: '/assets/chazki-logo.png',
+		highlights: [
+			'Replaced legacy system with new web + mobile logistics platform',
+			'Supported expansion to Chile, Mexico, Argentina and Colombia',
+			'Real-time tracking with Google Maps integration',
+		],
+		stack: ['React.js', 'React Native', 'Apollo Client', 'Ant Design', 'Express.js', 'PostgreSQL'],
+	},
+	{
+		company: 'Cibertec',
+		role: 'Part-time Instructor',
+		period: 'Sep 2021 — Dec 2022',
+		location: 'Lima, Perú',
+		color: '#d29922',
+		logo: '/assets/cibertec.png',
+		highlights: [
+			'Software testing: Selenium, JMeter',
+			'OOP with Java and C# — design patterns',
+		],
+		stack: ['Java', 'C#', 'Selenium', 'JMeter'],
+	},
+];
+---
+
+<section class="exp-section">
+	<div class="section-heading">Experience</div>
+
+	<div class="exp-list">
+		{jobs.map(job => (
+			<div class="exp-item">
+				<!-- Left column: period + location -->
+				<div class="exp-meta">
+					<div class="exp-period">{job.period}</div>
+					<div class="exp-location">{job.location}</div>
+				</div>
+
+				<!-- Timeline dot -->
+				<div class="exp-rail">
+					<div class="exp-dot" style={`background: ${job.color}; box-shadow: 0 0 0 3px ${job.color}22`}></div>
+					<div class="exp-line"></div>
+				</div>
+
+				<!-- Right column: card -->
+				<article class="exp-card">
+					<div class="exp-card-header">
+						{job.logo && (
+							<img src={job.logo} alt={job.company} class="exp-logo" />
+						)}
+						<div>
+							<div class="exp-title-row">
+								{job.url
+									? <a href={job.url} class="exp-company exp-company-link" target="_blank" rel="noopener">{job.company}</a>
+									: <div class="exp-company">{job.company}</div>
+								}
+								{job.current && (
+									<span class="badge-current">
+										<span class="badge-dot"></span>
+										Current
+									</span>
+								)}
+							</div>
+							<p class="exp-role">{job.role}</p>
+						</div>
+					</div>
+
+					<ul class="exp-highlights">
+						{job.highlights.map(h => <li>{h}</li>)}
+					</ul>
+
+					<div class="exp-stack">
+						{job.stack.map(t => <span class="stack-tag">{t}</span>)}
+					</div>
+				</article>
+			</div>
+		))}
+	</div>
+</section>
+
+<style>
+	.exp-section { padding: 2rem 0; }
+
+	.section-heading {
+		font-size: var(--text-md);
+		font-weight: 600;
+		color: var(--fg-default);
+		margin-bottom: 1rem;
+		padding-bottom: 0.5rem;
+		border-bottom: 1px solid var(--border-default);
+	}
+
+	.exp-list {
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+	}
+
+	/* Mobile: simple stacked */
+	.exp-item {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 0;
+		padding: 1.25rem 0;
+		border-bottom: 1px solid var(--border-muted);
+	}
+	.exp-item:last-child { border-bottom: none; }
+
+	.exp-meta {
+		display: none;
+	}
+
+	.exp-rail { display: none; }
+
+	/* Card */
+	.exp-card {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.exp-card-header {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.75rem;
+	}
+
+	.exp-logo {
+		width: 32px;
+		height: 32px;
+		object-fit: contain;
+		border-radius: 6px;
+		flex-shrink: 0;
+		margin-top: 0.1rem;
+		background: #ffffff;
+		padding: 3px;
+		border: 1px solid var(--border-default);
+	}
+
+	.exp-company-link {
+		color: var(--fg-default);
+		text-decoration: none;
+		transition: color 0.15s;
+	}
+	.exp-company-link:hover {
+		color: #5B5BD6;
+		text-decoration: none;
+	}
+
+	.exp-title-row {
+		display: flex;
+		align-items: center;
+		gap: 0.625rem;
+		flex-wrap: wrap;
+		margin-bottom: 0.25rem;
+	}
+
+	.exp-company {
+		font-size: var(--text-md);
+		font-weight: 600;
+		color: var(--fg-default);
+		letter-spacing: -0.01em;
+	}
+
+	.badge-current {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.3rem;
+		background: var(--success-subtle);
+		color: var(--success-fg);
+		border: 1px solid var(--success-muted);
+		border-radius: var(--r-pill);
+		padding: 0.125rem 0.5rem;
+		font-size: var(--text-xs);
+		font-weight: 600;
+	}
+
+	.badge-dot {
+		width: 6px;
+		height: 6px;
+		background: var(--success-fg);
+		border-radius: 50%;
+		animation: pulse 2s ease infinite;
+	}
+
+	.exp-role {
+		font-size: var(--text-sm);
+		color: var(--fg-muted);
+		font-weight: 500;
+	}
+
+	.exp-highlights {
+		list-style: none;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.3rem;
+	}
+
+	.exp-highlights li {
+		font-size: var(--text-sm);
+		color: var(--fg-muted);
+		line-height: 1.55;
+		padding-left: 1rem;
+		position: relative;
+	}
+	.exp-highlights li::before {
+		content: '—';
+		position: absolute;
+		left: 0;
+		color: var(--border-default);
+		font-size: var(--text-xs);
+	}
+
+	.exp-stack {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.3rem;
+	}
+
+	.stack-tag {
+		background: var(--canvas-subtle);
+		color: var(--fg-muted);
+		border: 1px solid var(--border-default);
+		border-radius: var(--r-sm);
+		padding: 0.125rem 0.5rem;
+		font-size: var(--text-xs);
+		font-weight: 500;
+		font-family: var(--font-mono);
+	}
+
+	/* Desktop: 3-column layout */
+	@media (min-width: 768px) {
+		.exp-item {
+			grid-template-columns: 10rem 1.25rem 1fr;
+			gap: 0 1.25rem;
+			padding: 1.5rem 0;
+			align-items: start;
+		}
+
+		.exp-meta {
+			display: flex;
+			flex-direction: column;
+			gap: 0.25rem;
+			padding-top: 0.1rem;
+			text-align: right;
+		}
+
+		.exp-period {
+			font-size: var(--text-xs);
+			color: var(--fg-muted);
+			font-weight: 500;
+			white-space: nowrap;
+		}
+
+		.exp-location {
+			font-size: var(--text-xs);
+			color: var(--fg-subtle);
+		}
+
+		.exp-rail {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding-top: 0.25rem;
+		}
+
+		.exp-dot {
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			flex-shrink: 0;
+			position: relative;
+			z-index: 1;
+		}
+
+		.exp-line {
+			width: 1px;
+			flex: 1;
+			background: var(--border-default);
+			margin-top: 0.25rem;
+			min-height: 2.5rem;
+		}
+
+		.exp-item:last-child .exp-line { display: none; }
+	}
+</style>

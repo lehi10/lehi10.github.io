@@ -1,0 +1,178 @@
+---
+const achievements = [
+	{ icon: '🏆', label: 'Competitive programming team member · ICPC South America contestant' },
+
+	{ icon: '📅', label: 'Organized campus tech events — student demos, industry talks & coding contests' },
+];
+
+const tags: string[] = [];
+---
+
+<section class="edu-section">
+	<div class="edu-label">Education</div>
+
+	<div class="edu-card">
+		<div class="edu-top">
+			<img src="/assets/unsa.png" alt="UNSA" class="edu-logo" />
+			<div class="edu-info">
+				<div class="edu-meta-row">
+					<span class="edu-degree-badge">Bachiller &middot; Computer Science</span>
+					<span class="edu-year">2019</span>
+				</div>
+				<div class="edu-name">Universidad Nacional de San Agustín de Arequipa</div>
+				<div class="edu-location">Arequipa, Perú</div>
+			</div>
+		</div>
+
+		<div class="edu-divider"></div>
+
+		<div class="edu-chips">
+			{achievements.map(a => (
+				<span class="ach-chip">
+					<span class="ach-icon">{a.icon}</span>
+					{a.label}
+				</span>
+			))}
+		</div>
+
+	</div>
+</section>
+
+<style>
+	.edu-section {
+		padding: 2rem 0;
+	}
+
+	.edu-label {
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: #e6edf3;
+		margin-bottom: 1.25rem;
+		padding-bottom: 0.75rem;
+		border-bottom: 1px solid #30363d;
+		font-family: var(--font-sans);
+	}
+
+	.edu-card {
+		background: #161b22;
+		border: 1px solid #30363d;
+		border-radius: 8px;
+		padding: 1.5rem;
+	}
+	.edu-card:hover {
+		border-color: #6e7681;
+	}
+
+	/* Top */
+	.edu-top {
+		display: flex;
+		gap: 1rem;
+		align-items: flex-start;
+		margin-bottom: 1.25rem;
+	}
+
+	.edu-logo {
+		width: 52px;
+		height: 52px;
+		object-fit: contain;
+		border-radius: 8px;
+		border: 1px solid #30363d;
+		flex-shrink: 0;
+	}
+
+	.edu-info {
+		display: flex;
+		flex-direction: column;
+		gap: 0.3rem;
+		flex: 1;
+	}
+
+	.edu-meta-row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.75rem;
+		flex-wrap: wrap;
+	}
+
+	.edu-degree-badge {
+		font-size: 1rem;
+		font-weight: 700;
+		color: #e6edf3;
+		font-family: var(--font-sans);
+		letter-spacing: -0.01em;
+	}
+
+	.edu-year {
+		font-size: 0.75rem;
+		color: #6e7681;
+		font-family: var(--font-mono);
+		white-space: nowrap;
+	}
+
+	.edu-name {
+		font-size: 0.8125rem;
+		font-weight: 400;
+		color: #8b949e;
+		line-height: 1.4;
+	}
+
+	.edu-location {
+		font-size: 0.75rem;
+		color: #6e7681;
+	}
+
+	/* Divider */
+	.edu-divider {
+		height: 1px;
+		background: #21262d;
+		margin-bottom: 1rem;
+	}
+
+	/* Achievement chips */
+	.edu-chips {
+		display: flex;
+		flex-direction: column;
+		gap: 0.375rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.ach-chip {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.375rem;
+		background: #21262d;
+		border: 1px solid #30363d;
+		border-radius: 6px;
+		padding: 0.3rem 0.625rem;
+		font-size: 0.75rem;
+		color: #adbac7;
+		font-weight: 500;
+		width: fit-content;
+	}
+
+	.ach-icon {
+		font-size: 0.8rem;
+		line-height: 1;
+	}
+
+	/* Skill tags */
+	.edu-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.3rem;
+	}
+
+	.edu-tag {
+		display: inline-block;
+		font-size: 0.6875rem;
+		font-weight: 500;
+		color: #58a6ff;
+		background: rgba(31, 111, 235, 0.15);
+		border: 1px solid rgba(56, 139, 253, 0.4);
+		border-radius: 20px;
+		padding: 0.1rem 0.5rem;
+		font-family: var(--font-mono);
+		white-space: nowrap;
+	}
+</style>

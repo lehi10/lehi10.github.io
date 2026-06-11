@@ -1,39 +1,56 @@
 ---
 import { getCollection } from 'astro:content';
-
 import BaseLayout from '../layouts/BaseLayout.astro';
-
 import ContactCTA from '../components/ContactCTA.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
-import Hero from '../components/Hero.astro';
 import Grid from '../components/Grid.astro';
 
-const projects = (await getCollection('work')).sort(
+const projects = (await getCollection('projects')).sort(
 	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
 );
 ---
 
 <BaseLayout
-	title="My Work | Lehi Quincho"
-	description="Learn about Lehi Quincho's most recent projects"
+	title="Work — Lehi Quincho"
+	description="Projects and professional work by Lehi Quincho — React, Next.js, React Native, and more."
 >
-	<div class="stack gap-20">
-		<main class="wrapper stack gap-8">
-			<Hero
-				title="My Work"
-				tagline="See my most recent projects below to get an idea of my past experience."
-				align="start"
-			/>
-			<Grid variant="offset">
-				{
-					projects.map((project) => (
-						<li>
-							<PortfolioPreview project={project} />
-						</li>
-					))
-				}
-			</Grid>
-		</main>
+	<main class="wrapper work-page">
+		<header class="work-header">
+			<h1>Work</h1>
+			<p>A selection of projects and professional work across web, mobile, and enterprise platforms.</p>
+		</header>
+
+		<Grid variant="small">
+			{projects.map(p => (
+				<li><PortfolioPreview project={p} /></li>
+			))}
+		</Grid>
+
 		<ContactCTA />
-	</div>
+	</main>
 </BaseLayout>
+
+<style>
+	.work-page {
+		padding-top: 3.5rem;
+		padding-bottom: 2rem;
+	}
+
+	.work-header {
+		margin-bottom: 3rem;
+	}
+
+	.work-header h1 {
+		font-size: clamp(2rem, 5vw, var(--text-5xl));
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		margin-bottom: 0.75rem;
+	}
+
+	.work-header p {
+		font-size: var(--text-lg);
+		color: var(--gray-400);
+		max-width: 50ch;
+		line-height: 1.6;
+	}
+</style>
